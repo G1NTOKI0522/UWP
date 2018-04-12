@@ -8,11 +8,12 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid>
+        <Grid Name="mainGrid">
             <Grid.Background>
                 <ImageBrush ImageSource="Assets/pic.png" Opacity="0.9" />
             </Grid.Background>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="50*" />
                 <RowDefinition Height="*" />
@@ -23,12 +24,40 @@
                     <TextBlock  Name="Title" FontSize="24" Margin="12,14"/>
                 </CommandBar.Content>
                 <AppBarButton Icon="OpenFile" Label="openFile" Click="AppBarButton_Click" />
+                <AppBarButton Icon="Play" Label="playOnline" Click="AppBarButton_Click_1" />
             </CommandBar>
+            <SplitView IsPaneOpen="False"
+                         DisplayMode="Inline"
+                       PanePlacement="Right"
+                         OpenPaneLength="400" Name="choice" Grid.Row="1" >
+                <SplitView.Pane>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Name ="inputUrl" Header="URL:" PlaceholderText="http://..." Grid.Row="1" Grid.ColumnSpan="2"
+                                 Width ="268"
+                                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Button Content="justPlay" Click ="Button_Click"  Margin="50" Grid.Row="2" Grid.Column="0"/>
+                        <Button Content="cacheThenPlay" Click ="Button_Click_1"  Margin="50" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+
+                    
+                </SplitView.Pane>
+
+            </SplitView>
             <MediaPlayerElement x:Name="mediaSimple" 
 			        AutoPlay="False"
 			        AreTransportControlsEnabled="True"
 			        IsEnabled="True"
-			        Grid.Row="1" 
+			        Grid.Row="2" 
 			/>
         </Grid>
     </Grid>

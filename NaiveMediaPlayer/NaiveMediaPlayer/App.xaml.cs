@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,6 +27,8 @@ namespace NaiveMediaPlayer
         /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行，
         /// 已执行，逻辑上等同于 main() 或 WinMain()。
         /// </summary>
+
+
         public App()
         {
             this.InitializeComponent();
@@ -96,5 +99,7 @@ namespace NaiveMediaPlayer
             //TODO: 保存应用程序状态并停止任何后台活动
             deferral.Complete();
         }
+
+
     }
 }
