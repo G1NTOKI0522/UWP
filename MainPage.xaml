@@ -1,0 +1,64 @@
+﻿<Page
+    x:Class="NaiveMediaPlayer.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NaiveMediaPlayer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Name="mainGrid">
+            <Grid.Background>
+                <ImageBrush ImageSource="Assets/pic.png" Opacity="0.9" />
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <CommandBar DefaultLabelPosition="Right" IsOpen="False" OverflowButtonVisibility="Collapsed"  Grid.Row="0">
+                <CommandBar.Content>
+                    <TextBlock  Name="Title" FontSize="24" Margin="12,14"/>
+                </CommandBar.Content>
+                <AppBarButton Icon="OpenFile" Label="openFile" Click="AppBarButton_Click" />
+                <AppBarButton Icon="Play" Label="playOnline" Click="AppBarButton_Click_1" />
+            </CommandBar>
+            <SplitView IsPaneOpen="False"
+                         DisplayMode="Inline"
+                       PanePlacement="Right"
+                         OpenPaneLength="400" Name="choice" Grid.Row="1" >
+                <SplitView.Pane>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Name ="inputUrl" Header="URL:" PlaceholderText="http://..." Grid.Row="1" Grid.ColumnSpan="2"
+                                 Width ="268"
+                                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Button Content="justPlay" Click ="Button_Click"  Margin="50" Grid.Row="2" Grid.Column="0"/>
+                        <Button Content="cacheThenPlay" Click ="Button_Click_1"  Margin="50" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+
+                    
+                </SplitView.Pane>
+
+            </SplitView>
+            <MediaPlayerElement x:Name="mediaSimple" 
+			        AutoPlay="False"
+			        AreTransportControlsEnabled="True"
+			        IsEnabled="True"
+			        Grid.Row="2" 
+			/>
+        </Grid>
+    </Grid>
+</Page>
